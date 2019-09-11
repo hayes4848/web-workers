@@ -3,8 +3,8 @@ const sort = (bigArray) => {
   return bigArray.sort((a, b) => a - b );
 };
 
-onmessage = ({data}) => {
-  console.log('chunk: ', data);
+onmessage = (data) => {
+  console.log(data);
   const sorted = sort(data);
 
   postMessage(sorted);
