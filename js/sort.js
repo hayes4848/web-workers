@@ -3,9 +3,9 @@ const sort = (bigArray) => {
   return bigArray.sort((a, b) => a - b );
 };
 
-onmessage = ({chunk}) => {
-  console.log('chunk: ', chunk);
-  const sorted = sort(chunk);
+onmessage = ({data}) => {
+  console.log('chunk: ', data);
+  const sorted = sort(data);
 
   postMessage(sorted);
 
