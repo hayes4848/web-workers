@@ -26,7 +26,7 @@ const bigArrayWithWorker = async (bigArray) => {
   console.time('chunking');
   const numberOfWorkers = 4;
   let size = Math.ceil(bigArray.length / numberOfWorkers);
- 
+  console.log(size);
   let chunky = chunk(bigArray, size);
   console.log(chunky);
 
@@ -44,7 +44,7 @@ const sortArrayWithWorker = async(chunk) => {
 
     worker.onmessage = ({data}) => resolve(data);
 
-    worker.postMessage(chunk)
+    worker.postMessage(chunk);
   });
 }
 
