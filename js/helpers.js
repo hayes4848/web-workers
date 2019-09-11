@@ -28,6 +28,7 @@ const bigArrayWithWorker = async (bigArray) => {
   let size = Math.ceil(bigArray.length / numberOfWorkers);
  
   let chunky = chunk(bigArray, size);
+  console.log(chunky);
 
   //assign smaller chunks to a worker
   const promises = chunky.map( c => sortArrayWithWorker(c));
