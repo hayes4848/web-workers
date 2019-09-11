@@ -4,7 +4,6 @@ const sort = (bigArray) => {
 };
 
 onmessage = (event) => {
-  console.log("data: ", event.data);
   const sorted = sort(event.data);
 
   postMessage(sorted);

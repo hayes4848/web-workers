@@ -1,4 +1,3 @@
-let worker;
 
 const countUp = () => {
   let i = 0;
@@ -10,7 +9,7 @@ const countUp = () => {
 };
 
 const withWorker = () => {
-  worker = new Worker('js/worker.js');
+  let worker = new Worker('js/worker.js');
   worker.onmessage = event => {
     console.log(event.data);
   };
@@ -26,15 +25,13 @@ const bigArrayWithWorker = async (bigArray) => {
   console.time('chunking');
   const numberOfWorkers = 4;
   let size = Math.ceil(bigArray.length / numberOfWorkers);
-  console.log(size);
   let chunky = chunk(bigArray, size);
-  console.log(chunky);
 
   //assign smaller chunks to a worker
   const promises = chunky.map( c => sortArrayWithWorker(c));
   const results =  await Promise.all(promises);
-  results.reduce((acc, chunk) => acc.concat(chunk), []); 
-  console.log(results.length)
+  const fullResults = results.reduce((acc, chunk) => acc.concat(chunk), []); 
+  console.log(fullResults.length)
   console.timeEnd('chunking');
 }
 
