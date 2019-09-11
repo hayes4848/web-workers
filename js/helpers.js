@@ -33,6 +33,7 @@ const bigArrayWithWorker = async (bigArray) => {
   const promises = chunky.map( c => sortArrayWithWorker(c));
   const results =  await Promise.all(promises);
   results.reduce((acc, chunk) => acc.concat(chunk), []); 
+  console.log(results.length)
   console.timeEnd('chunking');
 }
 
