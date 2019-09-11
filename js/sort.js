@@ -3,7 +3,7 @@ const sort = (bigArray) => {
   return bigArray.sort((a, b) => a - b );
 };
 
-onmessage = (data) => {
+onmessage = ({data}) => {
   console.log(data);
   const sorted = sort(data);
 
