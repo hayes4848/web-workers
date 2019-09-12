@@ -60,7 +60,6 @@ const bigArray = () => {
   return new Promise((resolve, reject) => {
     let worker = new Worker('js/five-million.js')
     worker.onmessage = ({data}) => {
-      console.log("array length", data.length)
       resolve(data);
     }
     worker.postMessage('');
