@@ -63,5 +63,5 @@ const bigArray = () => {
     console.log("array length", data.length)
     return data;
   }
-  worker.postMessage();
+  worker.postMessage('');
 };
