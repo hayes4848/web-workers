@@ -57,11 +57,13 @@ const chunk = (array, size) => {
 }
 
 const bigArray = () => {
-  let worker = new Worker('js/five-million.js')
-
-  worker.onmessage = ({data}) => {
-    console.log("array length", data.length)
-    return data;
-  }
-  worker.postMessage('');
+  return new Promise((resolve, reject) => {
+    let worker = new Worker('js/five-million.js')
+    worker.onmessage = ({data}) => {
+      console.log("array length", data.length)
+      resolve(data);
+    }
+    worker.postMessage('');
+  })
+  
 };
