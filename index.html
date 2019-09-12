@@ -29,8 +29,10 @@
 		<script>
 			animate();
 			let array;
-			array = bigArray();
-			console.log('array from html', array.length)
+			async () => {
+				array = await bigArray();
+				console.log('array from html', array.length)
+			}
 		</script>
 	</body>
 </html>
