@@ -1,7 +1,7 @@
 let i = 0;
 
 while (i < 60000) {
-  console.log(i)
-  // postMessage("The number is " + i);
+  console.log(" the number is ", i)
   i++;
 };
+postMessage("Web Worker finished counting");

@@ -1,7 +1,6 @@
 
 const countUp = () => {
   let i = 0;
-
   while (i < 60000) {
     console.log("The number is " + i);
     i++;
@@ -9,7 +8,9 @@ const countUp = () => {
 };
 
 const withWorker = () => {
+  // the worker.js file is downloaded asynchronosly, and as soon as it loads it begins to execute in a seperate thread. 
   let worker = new Worker('js/worker.js');
+  // workers communicate with the main thread through 'messages' as seen here. 
   worker.onmessage = event => {
     console.log(event.data);
   };
@@ -54,3 +55,13 @@ const chunk = (array, size) => {
   }
   return chunked_arr;
 }
+
+const bigArray = () => {
+  let worker = new Worker('js/five-million.js')
+
+  worker.onmessage = ({data}) => {
+    console.log("array length", data.length)
+    return data;
+  }
+  worker.postMessage();
+};
